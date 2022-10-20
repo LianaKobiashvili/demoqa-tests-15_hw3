@@ -22,7 +22,9 @@ public class PracticeFormTests {
     void fillFormTest() {
 
         open("/automation-practice-form");
-
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
         $("#firstName").setValue("Petr");
         $("#lastName").setValue("Kukushkin");
         $("#userEmail").setValue("kuku@gmail.com");
@@ -31,7 +33,7 @@ public class PracticeFormTests {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("July");
         $(".react-datepicker__year-select").selectOption("1992");
-        $(".react-datepicker__day--031").click();
+        $(".react-datepicker__day--031:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue("Chemistry").pressEnter();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("kot.jpg");
