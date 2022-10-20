@@ -38,19 +38,16 @@ public class PracticeFormTests {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("July");
         $(".react-datepicker__year-select").selectOption("1992");
-        $(".react-datepicker__day--031").click();
+        $(".react-datepicker__day--031:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue("Chemistry").pressEnter();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("kot.jpg");
         $("#currentAddress").setValue("Neva 40");
-        executeJavaScript("$('footer').remove()");
-        executeJavaScript("$('#fixedban').remove()");
         $("#state").click();
         $("#stateCity-wrapper").$(byText("Haryana")).click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Karnal")).click();
         $("#submit").click();
-
         $(".table-responsive").shouldHave(text("Petr Kukushkin"));
         $(".table-responsive").shouldHave(text("kuku@gmail.com"));
         $(".table-responsive").shouldHave(text("Male"));
